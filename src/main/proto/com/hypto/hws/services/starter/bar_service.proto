@@ -22,6 +22,9 @@ package barservice;
 
 // The simple service definition.
 service Bar {
+  // Print text
+  rpc printText (InputRequest) returns (OutputResponse) {}
+
   // Orders a requested drink from the bar counter
   rpc orderDrink (DrinkRequest) returns (DrinkResponse) {}
 
@@ -30,6 +33,14 @@ service Bar {
 
   // Pay a certain bill with a specific amount
   rpc payBill (PaymentRequest) returns (PaymentResponse) {}
+}
+
+message InputRequest {
+  string text = 1;
+}
+
+message OutputResponse {
+  string text = 1;
 }
 
 message PaymentRequest {
