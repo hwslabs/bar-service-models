@@ -22,17 +22,8 @@ package barservice;
 
 // The simple service definition.
 service Bar {
-  // Print text
+  // Print any given text
   rpc printText (InputRequest) returns (OutputResponse) {}
-
-  // Orders a requested drink from the bar counter
-  rpc orderDrink (DrinkRequest) returns (DrinkResponse) {}
-
-  // Orders multiple requested drinks from the bar counter
-  rpc orderMultipleDrinks (DrinksRequest) returns (DrinksResponse) {}
-
-  // Pay a certain bill with a specific amount
-  rpc payBill (PaymentRequest) returns (PaymentResponse) {}
 }
 
 message InputRequest {
@@ -41,74 +32,4 @@ message InputRequest {
 
 message OutputResponse {
   string text = 1;
-}
-
-message PaymentRequest {
-  Bill bill = 1;
-  uint64 paymentAmount = 2;
-}
-
-message PaymentResponse {
-  PaymentStatus status = 1;
-  uint64 balanceAmount = 2;
-  string reason = 3;
-}
-
-enum PaymentStatus {
-  PAID = 0;
-  PENDING = 1;
-  FAILED = 2;
-}
-
-message DrinkRequest {
-  Drink drink = 1;
-}
-
-message DrinkResponse {
-  Container container = 1;
-  Bill bill = 2;
-}
-
-// The request message containing the user's name.
-message DrinksRequest {
-  repeated Drink drinks = 1;
-}
-
-// The response message containing the greetings
-message DrinksResponse {
-  repeated Container containers = 1;
-  Bill bill = 2;
-}
-
-message Bill {
-  string orderId = 1;
-  uint64 orderAmount = 2;
-  google.protobuf.Timestamp orderTimestamp = 3;
-}
-
-message Drink {
-  string name = 1;
-  DrinkType type = 2;
-  uint64 amountInMl = 3;
-}
-
-enum DrinkType {
-  BEER = 0;
-  WHISKY = 1;
-  GIN = 2;
-  RUM = 3;
-  VODKA = 4;
-  WINE = 5;
-}
-
-message Container {
-  string containerId = 1;
-  ContainerType type = 2;
-  Drink drink = 3;
-}
-
-enum ContainerType {
-  JUG = 0;
-  CHALICE = 1;
-  GLASS = 3;
 }
