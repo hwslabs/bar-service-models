@@ -15,13 +15,13 @@ syntax = "proto3";
 import "google/protobuf/timestamp.proto";
 
 option java_multiple_files = true;
-option java_package = "com.hypto.hws.services.starter";
-option java_outer_classname = "BarService";
+option java_package = "com.hypto.hws.services";
+option java_outer_classname = "StarterService";
 
-package barservice;
+package starterservice;
 
 // The simple service definition.
-service Bar {
+service Starter {
   // Print any given text
   rpc printText (InputRequest) returns (OutputResponse) {}
 }
