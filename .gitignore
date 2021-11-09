@@ -7,3 +7,4 @@ build/
 gradle
 gradlew.bat
 gradlew
+.tmp
